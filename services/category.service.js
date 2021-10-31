@@ -12,7 +12,7 @@ exports.deleteCategory = async (id) => {
         data: null
     }
     try {
-        const data = await Category.deleteOne({ id })
+        const data = await Category.findOneAndDelete({ _id:id })
         result.data = data;
         return result
     } catch (error) {

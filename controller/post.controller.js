@@ -1,4 +1,5 @@
 const { postService } = require('../services/post.service')
+const { postMiddleware } = require('../middleware/post.js')
 exports.postController = {
     createPost: async (req, res) => {
         try {
@@ -24,6 +25,19 @@ exports.postController = {
     getById: async (req, res) => {
         try {
             const post = await postService.getById(req.params.id)
+            res.status(200).json({ success: true, data: post, message: '' })
+
+        } catch (error) {
+
+        }
+    },
+    delete: async (req, res) => {
+        try {
+            const { id } = req.body
+            const post = await postService.delete(id)
+            if (post !== null) {
+                await postMiddleware.unlinkFile(post.file)
+            }
             res.status(200).json({ success: true, data: post, message: '' })
 
         } catch (error) {

@@ -16,8 +16,8 @@ exports.getUserById = async (id) => {
     return await User.findOne({ _id:id })
 }
 exports.delete = async (id) => {
-    console.log(id)
-    return await User.findOneAndDelete({ _id:id })
+    // console.log(User.findOne({_id:id}))
+    return await User.findOneAndRemove({ _id:id })
 }
 exports.update = async (id, data) => {
     const { name, role, email, username } = data

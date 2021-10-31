@@ -29,7 +29,7 @@ const upload = multer({
 Route.post('/create', upload.single('postFile'), postController.createPost)
 Route.get('/', postController.getAll)
 Route.get('/:id', postController.getById)
-// Route.delete('/:id', postController.createPost)
+Route.delete('/', postController.delete)
 // Route.put('/:id', postController.createPost)
 
 module.exports = Route

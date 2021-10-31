@@ -29,7 +29,7 @@ exports.getUserById = async (req, res) => {
 }
 exports.delete = async (req, res) => {
     try {
-        const { id } = req.params
+        const { id } = req.body
         const user = await userService.delete(id)
         res.status(200).json({ success: true, data: user, message: 'Deleted Successfully.' })
     } catch (error) {

@@ -18,5 +18,8 @@ exports.postService = {
     },
     getById: async (id) => {
         return await Post.findOne({ _id: id }).populate("category")
+    },
+    delete: async (id) => {
+        return await Post.findOneAndRemove({ _id: id })
     }
 }

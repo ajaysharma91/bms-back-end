@@ -10,7 +10,7 @@ exports.create = async (req, res) => {
 }
 
 exports.delete = async (req, res) => {
-    const { id } = req.body.id
+    const { id } = req.body
     const result = await categoryService.deleteCategory(id)
     if (result.error != null) return res.status(500).json({ success: false, data: result.error, message: 'Something went wrong' })
     res.status(200).json({ success: true, data: result.data, message: 'Category Deleted Successfully.' })
