@@ -1,8 +1,9 @@
 const Category = require('../model/category.model')
 
-exports.createCategory = async (data) => {
+exports.createCategory = async (data, id) => {
     const { name, type } = data
-    const category = new Category({ name, type })
+    console.log(id)
+    const category = new Category({ name, type, created_by: id })
     return await category.save()
 }
 
@@ -12,7 +13,7 @@ exports.deleteCategory = async (id) => {
         data: null
     }
     try {
-        const data = await Category.findOneAndDelete({ _id:id })
+        const data = await Category.findOneAndDelete({ _id: id })
         result.data = data;
         return result
     } catch (error) {

@@ -14,12 +14,13 @@ const categorySchema = mongoose.Schema({
         default: true
     },
     created_by: {
-        type: Number,
-        default: 1
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: 'requied'
     },
     updated_by: {
-        type: Number,
-        default: 1
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }
 },
     {

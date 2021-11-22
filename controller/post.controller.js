@@ -3,7 +3,6 @@ const { postMiddleware } = require('../middleware/post.js')
 exports.postController = {
     createPost: async (req, res) => {
         try {
-            console.log(req)
             const postData = req.body
             let { path } = req.file
             const post = await postService.createPost(postData, path)

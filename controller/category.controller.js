@@ -2,9 +2,10 @@ const { catExist } = require('../middleware/category')
 const categoryService = require('../services/category.service')
 exports.create = async (req, res) => {
     const { name } = req.body
+    const id = req.headers.uid
     const existCat = await catExist(name)
     if (existCat) return res.status(403).json({ success: true, message: 'Category Already Exist.' })
-    const category = await categoryService.createCategory(req.body)
+    const category = await categoryService.createCategory(req.body,id)
     res.status(201).json({ success: true, data: category, message: 'Category created successfully.' })
 
 }

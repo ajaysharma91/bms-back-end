@@ -13,18 +13,28 @@ exports.getAll = async () => {
     return await User.find()
 }
 exports.getUserById = async (id) => {
-    return await User.findOne({ _id:id })
+    return await User.findOne({ _id: id })
 }
 exports.delete = async (id) => {
-    // console.log(User.findOne({_id:id}))
-    return await User.findOneAndRemove({ _id:id })
+    return await User.findOneAndRemove({ _id: id })
 }
 exports.update = async (id, data) => {
     const { name, role, email, username } = data
-    return await User.findOneAndUpdate({ _id:id }, {
+    return await User.findOneAndUpdate({ _id: id }, {
         name,
         username,
         email,
         role
+    })
+}
+exports.findUserByEmail = async (email) => {
+    return await User.findOne({ email })
+}
+exports.matchPassword = async (hashPass, password) => {
+    return await bcrypt.compare(password, hashPass)
+}
+exports.updateUserWithToken = async (id, user_token) => {
+    const user = await User.findOneAndUpdate({ _id: id }, {
+        user_token
     })
 }

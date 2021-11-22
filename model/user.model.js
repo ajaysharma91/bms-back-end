@@ -28,6 +28,10 @@ const userScheema = mongoose.Schema({
     is_active: {
         type: Boolean,
         default: true
+    },
+    user_token:{
+        type:String,
+        default:''
     }
 },
     {
