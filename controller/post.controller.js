@@ -4,7 +4,7 @@ exports.postController = {
     createPost: async (req, res) => {
         try {
             const postData = req.body
-            let { path } = req.file
+            let { path } = req.file || ''
             const post = await postService.createPost(postData, path)
             res.status(201).json({ success: true, data: post, message: 'Post Created Successfully' })
 

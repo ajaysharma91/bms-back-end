@@ -27,7 +27,7 @@ exports.auth = {
     isPermission: async (req, res, next) => {
 
         let token = req.headers.authorization.split(' ')[1]
-        const user = await User.findOne({ username: username })
+        const user = await User.findOne({ username: req.username })
         if (user.role !== userConfig.roles.admin && user.user_token === token) {
             return res.status(403).json({ success: false, message: 'You are not right for this operation' })
         }

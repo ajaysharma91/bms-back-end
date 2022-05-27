@@ -116,7 +116,7 @@ exports.userController = {
 
             }
 
-            res.status(200).json({ success: true, data: user, message: 'Email or Password do not match' })
+            res.status(200).json({ success: true, message: 'Email or Password do not match' })
 
         } catch (error) {
             console.log(error)
